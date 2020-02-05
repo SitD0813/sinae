@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sinae
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -89,10 +89,10 @@ typedef struct <a class="el" href="structsn__op__st.html">sn_op_st</a>&#160;</td
 typedef <a class="el" href="structsn__mda__st.html">sn_mda</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#ga1900d989573dd1d9cae283643c357fa6">sn_flow_fn</a>(<a class="el" href="structsn__op__st.html">sn_op</a> *op, const <a class="el" href="structsn__mda__st.html">sn_mda</a> *x[])</td></tr>
 <tr class="memdesc:ga1900d989573dd1d9cae283643c357fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function type which performs an actual calculation. <br /></td></tr>
 <tr class="separator:ga1900d989573dd1d9cae283643c357fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1575a24a6e259cbe59051185674b9aa1"><td class="memItemLeft" align="right" valign="top"><a id="ga1575a24a6e259cbe59051185674b9aa1"></a>
-typedef <a class="el" href="structsn__mda__st.html">sn_mda</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#ga1575a24a6e259cbe59051185674b9aa1">sn_dflow_fn</a>(<a class="el" href="structsn__op__st.html">sn_op</a> *op, const <a class="el" href="structsn__mda__st.html">sn_mda</a> *x[])</td></tr>
-<tr class="memdesc:ga1575a24a6e259cbe59051185674b9aa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function type which performs a gradient calculation. <br /></td></tr>
-<tr class="separator:ga1575a24a6e259cbe59051185674b9aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga090112c2b9a3e2dccd52ea151cfea8a2"><td class="memItemLeft" align="right" valign="top"><a id="ga090112c2b9a3e2dccd52ea151cfea8a2"></a>
+typedef <a class="el" href="structsn__mda__st.html">sn_mda</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#ga090112c2b9a3e2dccd52ea151cfea8a2">sn_dflow_fn</a>(<a class="el" href="structsn__op__st.html">sn_op</a> *op, const <a class="el" href="structsn__mda__st.html">sn_mda</a> *x[])</td></tr>
+<tr class="memdesc:ga090112c2b9a3e2dccd52ea151cfea8a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function type which performs a gradient calculation. <br /></td></tr>
+<tr class="separator:ga090112c2b9a3e2dccd52ea151cfea8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6e3d890a6c022d2b236e46354fb55686"><td class="memItemLeft" align="right" valign="top"><a id="ga6e3d890a6c022d2b236e46354fb55686"></a>
 typedef enum <a class="el" href="group__operator__group.html#ga74c3194413179403514a131d0ba20abe">sn_op_type_en</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#ga6e3d890a6c022d2b236e46354fb55686">sn_op_type</a></td></tr>
 <tr class="memdesc:ga6e3d890a6c022d2b236e46354fb55686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum type to distinguish the type of sn_op object. <br /></td></tr>
@@ -110,17 +110,17 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gafa12358b92ab2ad2d18afc7b1950a5d9"><td class="memItemLeft" align="right" valign="top"><a id="gafa12358b92ab2ad2d18afc7b1950a5d9"></a>
-<a class="el" href="structsn__op__st.html">sn_op</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#gafa12358b92ab2ad2d18afc7b1950a5d9">sn_op_create</a> (<a class="el" href="group__operator__group.html#ga6e3d890a6c022d2b236e46354fb55686">sn_op_type</a> type, <a class="el" href="group__operator__group.html#ga1900d989573dd1d9cae283643c357fa6">sn_flow_fn</a> *flow, <a class="el" href="group__operator__group.html#ga1575a24a6e259cbe59051185674b9aa1">sn_dflow_fn</a> *dflow, <a class="el" href="sinae__macro_8h.html#a32c3e62e2db3becdc16f8a6da285b33c">SN_UINT</a> x_count, <a class="el" href="structsn__op__st.html">sn_op</a> *x[])</td></tr>
+<a class="el" href="structsn__op__st.html">sn_op</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#gafa12358b92ab2ad2d18afc7b1950a5d9">sn_op_create</a> (<a class="el" href="group__operator__group.html#ga6e3d890a6c022d2b236e46354fb55686">sn_op_type</a> type, <a class="el" href="group__operator__group.html#ga1900d989573dd1d9cae283643c357fa6">sn_flow_fn</a> *flow, <a class="el" href="group__operator__group.html#ga090112c2b9a3e2dccd52ea151cfea8a2">sn_dflow_fn</a> *dflow, <a class="el" href="sinae__macro_8h.html#a32c3e62e2db3becdc16f8a6da285b33c">SN_UINT</a> x_count, <a class="el" href="structsn__op__st.html">sn_op</a> *x[])</td></tr>
 <tr class="memdesc:gafa12358b92ab2ad2d18afc7b1950a5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sn_op object. <br /></td></tr>
 <tr class="separator:gafa12358b92ab2ad2d18afc7b1950a5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8a33509db91e7fc8da7a4b72c3dd47f"><td class="memItemLeft" align="right" valign="top"><a id="gab8a33509db91e7fc8da7a4b72c3dd47f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#gab8a33509db91e7fc8da7a4b72c3dd47f">sn_op_destroy_one</a> (<a class="el" href="structsn__op__st.html">sn_op</a> *self)</td></tr>
+<tr class="memdesc:gab8a33509db91e7fc8da7a4b72c3dd47f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the object without managing a reference counting. <br /></td></tr>
+<tr class="separator:gab8a33509db91e7fc8da7a4b72c3dd47f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5fde1eefb221e828eb0130364c3c8cb"><td class="memItemLeft" align="right" valign="top"><a id="gaf5fde1eefb221e828eb0130364c3c8cb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#gaf5fde1eefb221e828eb0130364c3c8cb">sn_op_destroy</a> (<a class="el" href="structsn__op__st.html">sn_op</a> *self)</td></tr>
-<tr class="memdesc:gaf5fde1eefb221e828eb0130364c3c8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the object without managing a reference counting. <br /></td></tr>
+<tr class="memdesc:gaf5fde1eefb221e828eb0130364c3c8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively destroys the object, managing a reference counting. <br /></td></tr>
 <tr class="separator:gaf5fde1eefb221e828eb0130364c3c8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga325e2f06baae83491de025ea01495895"><td class="memItemLeft" align="right" valign="top"><a id="ga325e2f06baae83491de025ea01495895"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#ga325e2f06baae83491de025ea01495895">sn_op_rdestroy</a> (<a class="el" href="structsn__op__st.html">sn_op</a> *self)</td></tr>
-<tr class="memdesc:ga325e2f06baae83491de025ea01495895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively destroys the object, managing a reference counting. <br /></td></tr>
-<tr class="separator:ga325e2f06baae83491de025ea01495895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga551d4f8711d2c69a2549b99e9aa07551"><td class="memItemLeft" align="right" valign="top"><a id="ga551d4f8711d2c69a2549b99e9aa07551"></a>
 <a class="el" href="structsn__mda__st.html">sn_mda</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operator__group.html#ga551d4f8711d2c69a2549b99e9aa07551">sn_op_usflow</a> (<a class="el" href="structsn__op__st.html">sn_op</a> *self, <a class="el" href="structsn__map__st.html">sn_map</a> *feed)</td></tr>
 <tr class="memdesc:ga551d4f8711d2c69a2549b99e9aa07551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a symbolic expression. <br /></td></tr>

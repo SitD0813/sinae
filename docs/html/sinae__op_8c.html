@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sinae
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -163,7 +163,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="structsn__mda__st.html">sn_mda</a>* OP_NAME##_flow_(<a class="code" href="structsn__op__st.html">sn_op</a>* <span class="keyword">self</span>, <span class="keyword">const</span> <a class="code" href="structsn__mda__st.html">sn_mda</a>* x[]) {                                                     \</div>
 <div class="line">        return element_wise_binary_operator_flow_(<span class="keyword">self</span>, x, FLOW);                                                 \</div>
 <div class="line">    }                                                                                                             \</div>
-<div class="line">    sn_mda* OP_NAME##_dflow_(<a class="code" href="structsn__op__st.html">sn_op</a>* <span class="keyword">self</span>, <span class="keyword">const</span> <a class="code" href="structsn__mda__st.html">sn_mda</a>* x[]) {                                                    \</div>
+<div class="line">    sn_mda** OP_NAME##_dflow_(<a class="code" href="structsn__op__st.html">sn_op</a>* <span class="keyword">self</span>, <span class="keyword">const</span> <a class="code" href="structsn__mda__st.html">sn_mda</a>* x[]) {                                                    \</div>
 <div class="line">        <span class="comment">/* !!! Not implemented !!! */</span>                                                                             \</div>
 <div class="line">        return NULL;                                                                                              \</div>
 <div class="line">    }                                                                                                             \</div>
@@ -171,7 +171,7 @@ Functions</h2></td></tr>
 <div class="line">        return <a class="code" href="group__operator__group.html#gafa12358b92ab2ad2d18afc7b1950a5d9">sn_op_create</a>(OPERATOR, &amp;(OP_NAME##_flow_), &amp;(OP_NAME##_dflow_), 2, <a class="code" href="sinae__macro_8h.html#ab8d6a2a73229ea603ec730beed6b113a">SN_TEMP_ARRAY</a>(<a class="code" href="structsn__op__st.html">sn_op</a>*, x0, x1)); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="sinae__op_8c_source.html#l00067">67</a> of file <a class="el" href="sinae__op_8c_source.html">sinae_op.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sinae__op_8c_source.html#l00068">68</a> of file <a class="el" href="sinae__op_8c_source.html">sinae_op.c</a>.</p>
 
 </div>
 </div>
@@ -214,13 +214,14 @@ Functions</h2></td></tr>
 <div class="line">        }                                                                                   \</div>
 <div class="line">        return y;                                                                           \</div>
 <div class="line">    }                                                                                       \</div>
-<div class="line">    sn_mda* OP_NAME##_dflow_(<a class="code" href="structsn__op__st.html">sn_op</a>* <span class="keyword">self</span>, <span class="keyword">const</span> <a class="code" href="structsn__mda__st.html">sn_mda</a>* x[]) {                              \</div>
-<div class="line">        sn_mda* dy_dx = <a class="code" href="group__multi-dimentional__array__group.html#gaeabf0bf41e297f9f9fedb917da56e8d6">sn_mda_diagonal_full</a>(x[0]-&gt;rank, x[0]-&gt;shape, 0.0);                 \</div>
+<div class="line">    sn_mda** OP_NAME##_dflow_(<a class="code" href="structsn__op__st.html">sn_op</a>* <span class="keyword">self</span>, <span class="keyword">const</span> <a class="code" href="structsn__mda__st.html">sn_mda</a>* x[]) {                             \</div>
+<div class="line">        sn_mda** dy_dx_list = <a class="code" href="sinae__macro_8h.html#a00f00b5d0fc76543f557953d7fea3221">SN_DYNAMIC_ARRAY</a>(<a class="code" href="structsn__mda__st.html">sn_mda</a>*, 1);                                 \</div>
+<div class="line">        dy_dx_list[0] = <a class="code" href="group__multi-dimentional__array__group.html#gaeabf0bf41e297f9f9fedb917da56e8d6">sn_mda_diagonal_full</a>(x[0]-&gt;rank, x[0]-&gt;shape, 0.0);                 \</div>
 <div class="line">        SN_UINT one_side_size = <a class="code" href="group__multi-dimentional__array__group.html#gabbd40f8dccc2580119b512fc73e9fde8">sn_mda_size</a>(x[0]);                                          \</div>
 <div class="line">        for (<a class="code" href="sinae__macro_8h.html#a32c3e62e2db3becdc16f8a6da285b33c">SN_UINT</a> i = 0; i &lt; one_side_size; ++i) {                                       \</div>
-<div class="line">            SN_MATRIX_GET(dy_dx-&gt;ptr, one_side_size, i, i) = DFLOW(x[0]-&gt;ptr[i]);           \</div>
+<div class="line">            SN_MATRIX_GET(dy_dx_list[0]-&gt;ptr, one_side_size, i, i) = DFLOW(x[0]-&gt;ptr[i]);   \</div>
 <div class="line">        }                                                                                   \</div>
-<div class="line">        return dy_dx;                                                                       \</div>
+<div class="line">        return dy_dx_list;                                                                  \</div>
 <div class="line">    }                                                                                       \</div>
 <div class="line">    sn_op* sn_##OP_NAME(<a class="code" href="structsn__op__st.html">sn_op</a>* x) {                                                         \</div>
 <div class="line">        return <a class="code" href="group__operator__group.html#gafa12358b92ab2ad2d18afc7b1950a5d9">sn_op_create</a>(OPERATOR, &amp;OP_NAME##_flow_, &amp;OP_NAME##_dflow_, 1, (<a class="code" href="structsn__op__st.html">sn_op</a>**)&amp;x); \</div>
@@ -233,6 +234,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <div class="ttc" id="asinae__macro_8h_html_a32c3e62e2db3becdc16f8a6da285b33c"><div class="ttname"><a href="sinae__macro_8h.html#a32c3e62e2db3becdc16f8a6da285b33c">SN_UINT</a></div><div class="ttdeci">#define SN_UINT</div><div class="ttdoc">Overridable unsigned integer type used to represent the size of an object, etc.</div><div class="ttdef"><b>Definition:</b> <a href="sinae__macro_8h_source.html#l00044">sinae_macro.h:44</a></div></div>
 <div class="ttc" id="agroup__multi-dimentional__array__group_html_gabbd40f8dccc2580119b512fc73e9fde8"><div class="ttname"><a href="group__multi-dimentional__array__group.html#gabbd40f8dccc2580119b512fc73e9fde8">sn_mda_size</a></div><div class="ttdeci">SN_UINT sn_mda_size(const sn_mda *self)</div><div class="ttdoc">Returns the size of the array.</div><div class="ttdef"><b>Definition:</b> <a href="sinae__mda_8c_source.html#l00079">sinae_mda.c:79</a></div></div>
+<div class="ttc" id="asinae__macro_8h_html_a00f00b5d0fc76543f557953d7fea3221"><div class="ttname"><a href="sinae__macro_8h.html#a00f00b5d0fc76543f557953d7fea3221">SN_DYNAMIC_ARRAY</a></div><div class="ttdeci">#define SN_DYNAMIC_ARRAY(TYPE, SIZE)</div><div class="ttdoc">Returns dynamically allocated array.</div><div class="ttdef"><b>Definition:</b> <a href="sinae__macro_8h_source.html#l00063">sinae_macro.h:63</a></div></div>
 <div class="ttc" id="asinae__macro_8h_html_ab8d6a2a73229ea603ec730beed6b113a"><div class="ttname"><a href="sinae__macro_8h.html#ab8d6a2a73229ea603ec730beed6b113a">SN_TEMP_ARRAY</a></div><div class="ttdeci">#define SN_TEMP_ARRAY(TYPE,...)</div><div class="ttdoc">Returns an array using compound literal.</div><div class="ttdef"><b>Definition:</b> <a href="sinae__macro_8h_source.html#l00066">sinae_macro.h:66</a></div></div>
 <div class="ttc" id="astructsn__op__st_html"><div class="ttname"><a href="structsn__op__st.html">sn_op_st</a></div><div class="ttdef"><b>Definition:</b> <a href="sinae__core_8h_source.html#l00081">sinae_core.h:81</a></div></div>
 <div class="ttc" id="agroup__multi-dimentional__array__group_html_gaeabf0bf41e297f9f9fedb917da56e8d6"><div class="ttname"><a href="group__multi-dimentional__array__group.html#gaeabf0bf41e297f9f9fedb917da56e8d6">sn_mda_diagonal_full</a></div><div class="ttdeci">sn_mda * sn_mda_diagonal_full(SN_UINT one_side_rank, const SN_UINT one_side_shape[], SN_FLOAT value)</div><div class="ttdoc">Creates a diagonal sn_mda object initialized with a given value.</div><div class="ttdef"><b>Definition:</b> <a href="sinae__mda_8c_source.html#l00050">sinae_mda.c:50</a></div></div>
