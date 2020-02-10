@@ -66,10 +66,10 @@ sn_mda** sn_map_get_all(sn_map* self, sn_op* key);
 //!
 //! \{
 
-//! \brief Function type which performs an actual calculation.
+//! \brief Function type which evaluates operators.
 typedef sn_mda* sn_flow_fn(sn_op* op, const sn_mda* x[]);
-//! \brief Function type which performs a gradient calculation.
-typedef sn_mda** sn_dflow_fn(sn_op* op, const sn_mda* x[]);
+//! \brief Function type which calculates gradients.
+typedef sn_mda* sn_dflow_fn(sn_op* op, const sn_mda* x[]);
 
 //! \brief Enum type to distinguish the type of sn_op object.
 typedef enum sn_op_type_en {
@@ -90,9 +90,9 @@ struct sn_op_st {
 //! \brief Creates a sn_op object.
 sn_op* sn_op_create(sn_op_type type, sn_flow_fn* flow, sn_dflow_fn* dflow, SN_UINT x_count, sn_op* x[]);
 //! \brief Destroys the object without managing a reference counting.
-void sn_op_destroy_one(sn_op* self);
-//! \brief Recursively destroys the object, managing a reference counting.
 void sn_op_destroy(sn_op* self);
+//! \brief Recursively destroys the object, managing a reference counting.
+void sn_op_rdestroy(sn_op* self);
 //! \brief Calculates a symbolic expression.
 sn_mda* sn_op_usflow(sn_op* self, sn_map* feed);
 //! \brief Calculates a symbolic expression and destroys the \p feed.

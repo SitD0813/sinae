@@ -76,7 +76,6 @@ int main(void) {
     sn_map* gradient_map = sn_op_dflow(op, sn_map_from(2, placeholder0, mda0, placeholder1, mda1));
     sn_mda* gradient0 = sn_map_get(gradient_map, placeholder0);
     sn_mda* gradient1 = sn_map_get(gradient_map, placeholder1);
-
     printf("gradient0: rank = %u, value = { %f, %f, %f, %f, %f }\n", gradient0->rank, gradient0->ptr[0], gradient0->ptr[1], gradient0->ptr[2], gradient0->ptr[3], gradient0->ptr[4]);
     printf("gradient1: rank = %u, value = { %f, %f, %f, %f, %f }\n", gradient1->rank, gradient1->ptr[0], gradient1->ptr[1], gradient1->ptr[2], gradient1->ptr[3], gradient1->ptr[4]);
     
