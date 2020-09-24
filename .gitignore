@@ -1,5 +1,5 @@
-# Ignores Visual Studio related files.
+# Visual Studio
 .vs/
 
-# Ignores VS Code related files.
+# Visual Studio Code
 .vscode/
